@@ -98,11 +98,6 @@ export const updateListing = wrapAsync(async (req, res) => {
 export const showListing = async (req, res) => {
   const { id } = req.params;
 
-  // ✅ Validate ObjectId
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    throw new ExpressError("Invalid listing ID", 400);
-  }
-
   const listing = await Listing.findById(id)
     .populate("owner")
     .populate({ path: "reviews", populate: { path: "author" } });

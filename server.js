@@ -104,7 +104,7 @@ app.use(methodOverride("_method"));
 
 
 //routes
-app.use(listingRoute)
+app.use("/listings", listingRoute)
 app.use("/reviews", reviewRoute)
 app.use("/users", userRoute)
 // Connect to MongoDB with error handling
