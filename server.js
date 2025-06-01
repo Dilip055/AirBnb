@@ -102,7 +102,9 @@ app.use(methodOverride("_method"));
 
 // addListing();
 
-
+app.get('/',(req,res)=>{
+  res.redirect('/listings')
+})
 //routes
 app.use("/listings", listingRoute)
 app.use("/reviews", reviewRoute)
