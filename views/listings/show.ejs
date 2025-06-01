@@ -84,7 +84,38 @@
     </div>
   </div>
 
-  <!-- Review Modal stays unchanged -->
+   <!-- ✅ Review Modal -->
+  <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="/reviews/listings/<%= listing._id %>/reviews" method="POST">
+          <div class="modal-header">
+            <h5 class="modal-title" id="reviewModalLabel">Add a Review</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="comment" class="form-label">Comment</label>
+              <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+              <div class="star-rating">
+                <input type="radio" id="5-stars" name="rating" value="5"><label for="5-stars" class="fas fa-star"></label>
+                <input type="radio" id="4-stars" name="rating" value="4"><label for="4-stars" class="fas fa-star"></label>
+                <input type="radio" id="3-stars" name="rating" value="3"><label for="3-stars" class="fas fa-star"></label>
+                <input type="radio" id="2-stars" name="rating" value="2"><label for="2-stars" class="fas fa-star"></label>
+                <input type="radio" id="1-star" name="rating" value="1"><label for="1-star" class="fas fa-star"></label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script>
     const lat = <%= listing.latitude %>;
