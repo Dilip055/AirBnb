@@ -1,4 +1,4 @@
-
+import listing from "../models/listing.js";
 import Listing from "../models/listing.js"; 
 import ExpressError from "../utils/ExpressError.js";
 import wrapAsync from "../utils/wrapAsync.js";
