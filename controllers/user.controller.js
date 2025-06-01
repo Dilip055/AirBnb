@@ -62,6 +62,6 @@ export const logoutUser = (req, res, next) => {
   
 export const profileUser = async (req, res) => {
   const user = await User.findById(req.user._id);
-  res.render("users/profile", { user });
+  res.render("Users/profile", { user });
 }
 
