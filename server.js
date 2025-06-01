@@ -32,8 +32,8 @@ const port = process.env.PORT || 3000;
 
 // Template engine setup
 app.engine("ejs", ejsmate);
-app.set('view engine', 'ejs'); 
-app.set('views', path.join(__dirname, 'views'));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 const store = new MongoStore({
   mongoUrl: process.env.MONGO_URI,
@@ -104,7 +104,7 @@ app.use(methodOverride("_method"));
 
 
 //routes
-app.use("/", listingRoute)
+app.use(listingRoute)
 app.use("/reviews", reviewRoute)
 app.use("/users", userRoute)
 // Connect to MongoDB with error handling
