@@ -16,4 +16,5 @@ router.post("/register",upload.single('profileImage'),wrapAsync(registerUser));
 router.post("/login",savedUrl,loginUser);
 router.get("/logout",logoutUser);
 router.get("/profile",savedUrl,wrapAsync(profileUser));
+
 export default router;
