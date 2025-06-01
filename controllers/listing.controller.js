@@ -3,7 +3,7 @@ import Listing from "../models/listing.js";
 import ExpressError from "../utils/ExpressError.js";
 import wrapAsync from "../utils/wrapAsync.js";
 import NodeGeocoder from 'node-geocoder';
-
+import mongoose from "mongoose";
 const options = {
   provider: 'openstreetmap',
 };
