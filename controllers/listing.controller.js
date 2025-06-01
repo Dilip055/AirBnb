@@ -96,12 +96,21 @@ export const updateListing = wrapAsync(async (req, res) => {
 });
 
 export const showListing = async (req, res) => {
-  const listing = await Listing.findById(req.params.id)
+  const { id } = req.params;
+
+  // ✅ Validate ObjectId
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw new ExpressError("Invalid listing ID", 400);
+  }
+
+  const listing = await Listing.findById(id)
     .populate("owner")
     .populate({ path: "reviews", populate: { path: "author" } });
 
-  if (!listing) throw new ExpressError("Listing not found", 404);
-  
+  if (!listing) {
+    throw new ExpressError("Listing not found", 404);
+  }
+
   res.render("listings/show", { listing });
 };
 
