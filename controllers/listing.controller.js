@@ -14,7 +14,7 @@ const geocoder = NodeGeocoder(options);
 
 // Show all listings
 export const index = wrapAsync(async (req, res) => {
-  const listings = await listing.find({});
+  const listings = await Listing.find({});
   res.render("listings/index", { listings });
 });
 
