@@ -5,6 +5,7 @@ import url from "url";
 import methodOverride from "method-override";
 import ejsmate from "ejs-mate";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 // import  { sampleListings }  from "./app.js";
 import listingRoute from "./routes/listing.js";
 import reviewRoute from "./routes/review.js";
@@ -34,11 +35,20 @@ app.engine("ejs", ejsmate);
 app.set('view engine', 'ejs'); 
 app.set('views', path.join(__dirname, 'views'));
 
+const store = new MongoStore({
+  mongoUrl: process.env.MONGO_URI,
+  crypto: {
+    key: process.env.SESSION_SECRET,
+  },
+  touchAfter:24 * 3600
+});
 
+store.on("error", console.error);
 
 
 const sessionOption = {
-  secret: "secret",
+  store,
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie:{
@@ -94,7 +104,7 @@ app.use(methodOverride("_method"));
 
 
 //routes
-app.use("/listings", listingRoute)
+app.use("/", listingRoute)
 app.use("/reviews", reviewRoute)
 app.use("/users", userRoute)
 // Connect to MongoDB with error handling
