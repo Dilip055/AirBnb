@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leaflet Map Test</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-sA+ePcn0XJeJhQp6YJABKDxq8sNZO7f+NlwF+0i4v4M="
+    crossorigin=""
+  />
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script
+  src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  integrity="sha256-pm7f4bndQ6EZI+ZwILflZ/IEe27QGI1dq4Y7a1mg0Bs="
+  crossorigin=""
+></script>
+
+<script>
+  // Replace these with your dynamic lat/lng if you want
+  const lat = 40.7128; // Example: New York City latitude
+  const lng = -74.0060; // NYC longitude
+
+  const map = L.map('map').setView([lat, lng], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 19,
+  }).addTo(map);
+
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup('Location here')
+    .openPopup();
+</script>
+
+</body>
+</html>
